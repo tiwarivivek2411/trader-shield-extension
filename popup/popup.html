@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TraderShield Dashboard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <span class="shield-icon">🛡️</span>
+      <span class="title">TraderShield</span>
+    </div>
+    <span class="subtitle">Zerodha Kite & mStock Discipline Guard</span>
+  </div>
+
+  <div class="card market-status-card">
+    <div class="status-row">
+      <span class="label">Market Status (IST):</span>
+      <span id="market-status-badge" class="badge">Checking...</span>
+    </div>
+    <div id="ist-clock" class="clock">--:--:-- IST</div>
+  </div>
+
+  <div class="card limiters-card">
+    <h3>Active Guardrails</h3>
+    
+    <div class="limiter-item">
+      <div class="limiter-info">
+        <span class="icon">🔒</span>
+        <div>
+          <div class="limiter-name">Fund Addition Lock</div>
+          <div class="limiter-desc">Disabled during market hours (9:15 - 15:30 IST)</div>
+        </div>
+      </div>
+      <span id="fund-lock-status" class="status-pill active">ON</span>
+    </div>
+
+    <div class="limiter-item">
+      <div class="limiter-info">
+        <span class="icon">🚫</span>
+        <div>
+          <div class="limiter-name">0-DTE Option Blocker</div>
+          <div class="limiter-desc">Prevents trading contracts expiring today</div>
+        </div>
+      </div>
+      <span id="zero-dte-status" class="status-pill active">ON</span>
+    </div>
+  </div>
+
+  <div id="cooldown-alert" class="card alert-card" style="display: none;">
+    <span class="alert-icon">🔒</span>
+    <span id="cooldown-text">Anti-Tamper Lock Active</span>
+  </div>
+
+  <div class="footer">
+    <button id="open-settings-btn" class="settings-btn">⚙️ Configure Settings & Rules</button>
+  </div>
+
+  <script src="../utils/expiry_parser.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

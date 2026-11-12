@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TraderShield Settings & Rules</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="shield">🛡️</span>
+      <h1>TraderShield Settings</h1>
+      <p class="subtitle">Multi-Broker Behavioral Risk Guardrails (Zerodha Kite & mStock)</p>
+    </div>
+
+    <div id="cooldown-banner" class="alert-banner" style="display: none;">
+      <span class="icon">🔒</span>
+      <div>
+        <strong>Anti-Tamper Lock Active</strong>
+        <p id="cooldown-banner-text">Settings are locked for 12 hours to prevent revenge-trading toggles.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Discipline Guardrails</h2>
+      
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="title">Block Fund Additions During Trading Hours</span>
+          <span class="desc">Disables "Add Funds" buttons and intercepts fund redirects on Zerodha Kite & mStock between 09:15 AM and 03:30 PM IST.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="block-funds-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <span class="title">Block 0-DTE (Same-Day Expiry) Option Trading</span>
+          <span class="desc">Disables Buy/Sell buttons and blocks order execution for index/stock option contracts expiring today across Zerodha Kite & mStock.</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="block-zero-dte-toggle">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <div class="card anti-tamper-card">
+      <h2>Anti-Tamper Cooldown Lock</h2>
+      <p class="desc">
+        Enforce a mandatory <strong>12-Hour Lock Timer</strong>. Once activated, guardrail settings CANNOT be turned off until the timer expires. This prevents impulse setting changes during emotional trading losses.
+      </p>
+
+      <button id="start-cooldown-btn" class="lock-btn">
+        🔒 Activate 12-Hour Lock Timer
+      </button>
+    </div>
+
+    <div id="toast" class="toast">Settings Saved!</div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
